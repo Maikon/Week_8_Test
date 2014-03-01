@@ -41,28 +41,35 @@ end
 def make_numbers_negative(arg)
   arg > 0 ? -arg : arg
 end
-# turn an array of numbers into two arrays of numbers, one an array of
-# even numbers, the other an array of odd numbers
-# even numbers come first
-# so [1, 2, 3, 4, 5, 6] becomes [[2, 4, 6], [1, 3, 5]]
 
-# count the numbers of elements in an element which are palindromes
-# a palindrome is a word that's the same backwards as forward
-# e.g. 'bob'. So in the array ['bob', 'radar', 'eat'], there
-# are 2 palindromes (bob and radar), so the method should return 2
+def separate_array_into_even_and_odd_numbers(arg)
+  evens, odds = arg.select { |num| num.even? },
+                arg.select { |num| num.odd?  }
+end
 
-# return the shortest word in an array
+def number_of_elements_that_are_palindromes(arg)
+  arg.select { |word| word == word.reverse }.size
+end
 
-# return the longest word in an array
+def shortest_word_in_array(arg)
+  arg.reduce { |a, e| a.length < e.length ? a : e }
+end
 
-# add up all the numbers in an array, so [1, 3, 5, 6]
-# returns 15
+def longest_word_in_array(arg)
+  arg.reduce { |a, e| a.length > e.length ? a : e }
+end
 
-# turn an array into itself repeated twice. So [1, 2, 3]
-# becomes [1, 2, 3, 1, 2, 3]
+def total_of_array(arg)
+  arg.reduce(:+)
+end
 
-# convert a symbol into a string
+def double_array(arg)
+  arg * 2
+end
 
+def turn_symbol_into_string(arg)
+  arg.to_s
+end
 # get the average from an array, rounded to the nearest integer
 # so [10, 15, 25] should return 33
 
