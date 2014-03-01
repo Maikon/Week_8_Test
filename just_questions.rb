@@ -70,46 +70,50 @@ end
 def turn_symbol_into_string(arg)
   arg.to_s
 end
-# get the average from an array, rounded to the nearest integer
-# so [10, 15, 25] should return 33
 
-# get all the elements in an array, up until the first element
-# which is greater than five. e.g.
-# [1, 3, 5, 4, 1, 2, 6, 2, 1, 3, 7]
-# becomes [1, 3, 5, 4, 1, 2]
+def average_of_array(arg)
+  (arg.reduce(:+).to_f / arg.length).round
+end
 
-# turn an array (with an even number of elements) into a hash, by
-# pairing up elements. e.g. ['a', 'b', 'c', 'd'] becomes
-# {'a' => 'b', 'c' => 'd'}
+def get_elements_until_greater_than_five(arg)
+  arg.take_while { |x| x <= 5 }
+end
 
-# get all the letters used in an array of words and return
-# it as a array of letters, in alphabetical order
-# . e.g. the array ['cat', 'dog', 'fish'] becomes
-# ['a', 'c', 'd', 'f', 'g', 'h', 'i', 'o', 's', 't']
+def convert_array_to_a_hash(arg)
+  Hash[*arg]
+end
 
-# swap the keys and values in a hash. e.g.
-# {'a' => 'b', 'c' => 'd'} becomes
-# {'b' => 'a', 'd' => 'c'}
+def get_all_letters_in_array_of_words(arg)
+  arg.map { |word| word.split(//) }.flatten.uniq.sort
+end
 
-# in a hash where the keys and values are all numbers
-# add all the keys and all the values together, e.g.
-# {1 => 1, 2 => 2} becomes 6
+def swap_keys_and_values_in_a_hash(hash)
+  hash.invert
+end
 
-# take out all the capital letters from a string
-# so 'Hello JohnDoe' becomes 'ello ohnoe'
+def add_together_keys_and_values(hash)
+  hash.flatten.reduce(:+)
+end
 
-# round up a float up and convert it to an Integer,
-# so 3.214 becomes 4
+def remove_capital_letters_from_string(string)
+  string.gsub(/[A-Z]/, '')
+end
 
-# round down a float up and convert it to an Integer,
-# so 9.52 becomes 9
+def round_up_number(num)
+  num.ceil
+end
 
-# take a date and format it like dd/mm/yyyy, so Halloween 2013
-# becomes 31/10/2013
+def round_down_number(num)
+  num.floor
+end
 
-# get the domain name *without* the .com part, from an email address
-# so alex@makersacademy.com becomes makersacademy
+def format_date_nicely(date)
+  date.strftime('%d/%m/%Y')
+end
 
+def get_domain_name_from_email_address(email)
+  email[/@(\w+)/, 1]
+end
 # capitalize the first letter in each word of a string,
 #  except 'a', 'and' and 'the'
 # *unless* they come at the start of the start of the string, e.g.
